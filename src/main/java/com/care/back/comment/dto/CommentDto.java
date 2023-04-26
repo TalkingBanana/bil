@@ -12,4 +12,5 @@ public class CommentDto {
 	private int heart;
 	private int view;
 	//집ㅂ지지ㅏ런이ㅏㄹ
+	//ㄹㅇㄴㅁㄻㄴㅇㅁ
 }
