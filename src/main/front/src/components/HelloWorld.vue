@@ -1,5 +1,6 @@
 <template>
   <div>
+    
   </div>
 </template>
 
@@ -8,6 +9,7 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
+      
     }
   },
   methods: {

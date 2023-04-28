@@ -1,16 +1,19 @@
 <template>
-  <nav>
+  <div>
     <b-button @click="test">Test Button</b-button>
-  </nav>
-  <router-view/>
+    <router-view/>
+    <knowledge-board/>
+  </div>
 </template>
 
 <script>
-export default{
+import KnowledgeBoard from './components/KnowledgeBoard.vue';
 
+export default{
+  components: { KnowledgeBoard },
   methods: {
     test(){
-      this.axios.get("/hello").
+      this.axios.get("/api/hello").
       then((result)=>{
         console.log(result.data)
       });
