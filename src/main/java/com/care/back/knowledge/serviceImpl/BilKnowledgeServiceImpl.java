@@ -1,12 +1,12 @@
-package com.care.back.knowledge.service;
+package com.care.back.knowledge.serviceImpl;
 
 import org.springframework.stereotype.Service;
 
 import com.care.back.knowledge.dto.KnowledgeDto;
-import com.care.back.knowledge.serviceImpl.BilKnowledgeServiceImpl;
+import com.care.back.knowledge.service.BilKnowledgeService;
 
 @Service
-public class BilKnowledgeService implements BilKnowledgeServiceImpl{
+public class BilKnowledgeServiceImpl implements BilKnowledgeService{
 
 	@Override
 	public int knowledgeWriteProc(KnowledgeDto dto) {

@@ -10,12 +10,11 @@
 <script>
   import PageHeader from '@/components/common/PageHeader.vue';
   import PageFooter from '@/components/common/PageFooter.vue';
-
   export default {
     name: 'App',
     components: {
       PageFooter,
-      PageHeader
+      PageHeader,
     },
     methods: {
       test(){

@@ -1,8 +1,8 @@
-package com.care.back.qna.serviceImpl;
+package com.care.back.qna.service;
 
 import com.care.back.qna.dto.QnaDto;
 
-public interface BilQnaServiceImpl {
+public interface BilQnaService {
 
 	public int qnaWriteProc(QnaDto dto);
 	public int qnaUpdateProc(QnaDto dto);

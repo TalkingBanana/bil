@@ -1,8 +1,8 @@
-package com.care.back.notice.serviceImpl;
+package com.care.back.notice.service;
 
 import com.care.back.notice.dto.NoticeDto;
 
-public interface BilNoticeServiceImpl {
+public interface BilNoticeService {
 
 	public int noticeWriteProc(NoticeDto dto);
 	public int noticeUpdateProc(NoticeDto dto);

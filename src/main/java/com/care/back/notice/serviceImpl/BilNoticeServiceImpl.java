@@ -1,12 +1,12 @@
-package com.care.back.notice.service;
+package com.care.back.notice.serviceImpl;
 
 import org.springframework.stereotype.Service;
 
 import com.care.back.notice.dto.NoticeDto;
-import com.care.back.notice.serviceImpl.BilNoticeServiceImpl;
+import com.care.back.notice.service.BilNoticeService;
 
 @Service
-public class BilNoticeService implements BilNoticeServiceImpl{
+public class BilNoticeServiceImpl implements BilNoticeService{
 
 	@Override
 	public int noticeWriteProc(NoticeDto dto) {

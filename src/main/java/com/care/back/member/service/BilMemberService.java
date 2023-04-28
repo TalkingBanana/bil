@@ -1,8 +1,8 @@
-package com.care.back.member.serviceImpl;
+package com.care.back.member.service;
 
 import com.care.back.member.dto.MemberDto;
 
-public interface BilMemberServiceImpl {
+public interface BilMemberService {
 
 	public int signin(MemberDto dto);
 	public int idChk(String id);

@@ -1,14 +1,14 @@
-package com.care.back.member.service;
+package com.care.back.member.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.care.back.member.dao.BilMemberDao;
 import com.care.back.member.dto.MemberDto;
-import com.care.back.member.serviceImpl.BilMemberServiceImpl;
+import com.care.back.member.service.BilMemberService;
 
 @Service
-public class BilMemberService implements BilMemberServiceImpl{
+public class BilMemberServiceImpl implements BilMemberService{
 
 	@Autowired
 	BilMemberDao dao;

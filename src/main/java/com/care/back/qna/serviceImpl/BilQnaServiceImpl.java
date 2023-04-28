@@ -1,12 +1,12 @@
-package com.care.back.qna.service;
+package com.care.back.qna.serviceImpl;
 
 import org.springframework.stereotype.Service;
 
 import com.care.back.qna.dto.QnaDto;
-import com.care.back.qna.serviceImpl.BilQnaServiceImpl;
+import com.care.back.qna.service.BilQnaService;
 
 @Service
-public class BilQnaService implements BilQnaServiceImpl{
+public class BilQnaServiceImpl implements BilQnaService{
 
 	@Override
 	public int qnaWriteProc(QnaDto dto) {
