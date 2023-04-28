@@ -19,7 +19,7 @@
     },
     methods: {
       test(){
-        this.axios.get("/hello").
+        this.axios.get("/api/hello").
         then((result)=>{
           console.log(result.data)
         });
