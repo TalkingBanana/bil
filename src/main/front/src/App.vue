@@ -1,24 +1,31 @@
 <template>
+  <PageHeader/> <!--헤더 컴포넌트-->
   <nav>
     <b-button @click="test">Test Button</b-button>
   </nav>
   <router-view/>
+  <PageFooter/> <!--푸터 컴포넌트-->
 </template>
 
 <script>
-export default{
+  import PageHeader from '@/components/common/PageHeader.vue';
+  import PageFooter from '@/components/common/PageFooter.vue';
 
-  methods: {
-    test(){
-      this.axios.get("/hello").
-      then((result)=>{
-        console.log(result.data)
-      });
-      
+  export default {
+    name: 'App',
+    components: {
+      PageFooter,
+      PageHeader
     },
-  },
-}
-
+    methods: {
+      test(){
+        this.axios.get("/hello").
+        then((result)=>{
+          console.log(result.data)
+        });
+      }
+    }
+  }
 </script>
 
 <style>
