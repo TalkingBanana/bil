@@ -1,10 +1,29 @@
-package com.care.back.qna.serviceImpl;
+package com.care.back.qna.service;
+
+import org.springframework.stereotype.Service;
 
 import com.care.back.qna.dto.QnaDto;
+import com.care.back.qna.serviceImpl.BilQnaServiceImpl;
 
-public interface BilQnaServiceImpl {
+@Service
+public class BilQnaService implements BilQnaServiceImpl{
 
-	public int qnaWriteProc(QnaDto dto);
-	public int qnaUpdateProc(QnaDto dto);
-	public int qnaDeleteProc(QnaDto dto);
+	@Override
+	public int qnaWriteProc(QnaDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int qnaUpdateProc(QnaDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int qnaDeleteProc(QnaDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
