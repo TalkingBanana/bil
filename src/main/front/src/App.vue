@@ -1,27 +1,31 @@
 <template>
-  <div>
+  <PageHeader/> <!--헤더 컴포넌트-->
+  <nav>
     <b-button @click="test">Test Button</b-button>
-    <router-view/>
-    <knowledge-board/>
-  </div>
+  </nav>
+  <router-view/>
+  <PageFooter/> <!--푸터 컴포넌트-->
 </template>
 
 <script>
-import KnowledgeBoard from './components/KnowledgeBoard.vue';
+  import PageHeader from '@/components/common/PageHeader.vue';
+  import PageFooter from '@/components/common/PageFooter.vue';
 
-export default{
-  components: { KnowledgeBoard },
-  methods: {
-    test(){
-      this.axios.get("/api/hello").
-      then((result)=>{
-        console.log(result.data)
-      });
-      
+  export default {
+    name: 'App',
+    components: {
+      PageFooter,
+      PageHeader
     },
-  },
-}
-
+    methods: {
+      test(){
+        this.axios.get("/hello").
+        then((result)=>{
+          console.log(result.data)
+        });
+      }
+    }
+  }
 </script>
 
 <style>
