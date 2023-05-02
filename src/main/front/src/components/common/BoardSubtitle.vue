@@ -1,7 +1,6 @@
 <template>
     <div>
-        <b-container class="subtitle w-max rounded p-3 px-5">
-            <b-gid>
+        <b-container class="subtitle w-max rounded p-3 px-5 mb-3">
                 <b-row>
                     <b-col col="8" class="text-start">
                         <div>
@@ -19,7 +18,6 @@
                         <img :src="logoPath" class="subtitle-icon">
                     </b-col>
                 </b-row>
-            </b-gid>
         </b-container> 
     </div>
 </template>
@@ -31,7 +29,7 @@ export default{
     props:{
         subtitle : String,
         labelText : String,
-        logoPath : URL,
+        logoPath : String,
     },
     data() {
         return {
