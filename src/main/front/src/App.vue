@@ -1,8 +1,5 @@
 <template>
   <PageHeader/> <!--헤더 컴포넌트-->
-  <nav>
-    <b-button @click="test">Test Button</b-button>
-  </nav>
   <router-view/>
   <PageFooter/> <!--푸터 컴포넌트-->
 </template>

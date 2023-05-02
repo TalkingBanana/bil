@@ -11,6 +11,10 @@ body {
 		'Noto Color Emoji';
 }
 
+ul {
+	margin: 0 auto;
+}
+
 p {
 	line-height: 1.75;
 }
@@ -35,6 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 		'Noto Color Emoji';
 }
 
+
 /**********************************************************************************************/
 /* Header css */
 /**********************************************************************************************/
@@ -57,6 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mainNav .navbar-brand {
+	position: static;
 	color: #dcc2a2;
 	font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont,
 		'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
@@ -78,6 +84,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 		Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
 		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+		
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover
@@ -113,6 +120,76 @@ h1, h2, h3, h4, h5, h6 {
 		padding: 12px 0;
 	}
 }
+
+/* 페이드 인/아웃 효과 */
+.fade-screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+  
+  .fade-screen.show {
+	opacity: 1;
+	visibility: visible;
+  }
+
+  .menu ul li {
+	transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.menu-container ul li a {
+	display: flex;
+	display: inline-block;
+	font-family: -apple-system, BlinkMacSystemFont,  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",  "Fira Sans", "Droid Sans", "Helvetica Neue",  sans-serif;
+	text-decoration: none;
+	font-weight: 100;
+	font-size: 16px;
+
+  }
+
+/**********************************************************************************************/
+/* Login&Register css */
+/**********************************************************************************************/
+#mainNav .navbar-nav .nav-item .login-button {
+	background-color: #E0E0E0;
+	border: none;
+	border-radius: 4px;
+	color: black;
+	font-size: 80%;
+	font-weight: 500;
+	padding: 5px 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	letter-spacing: 1px;
+	font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+#mainNav .navbar-nav .nav-item .register-button {
+	display: inline-flex;
+	background-color: rgb(52, 152, 219);
+    border: none;
+	border-radius: 4px;
+    color: white;
+    font-size: 80%;
+	font-weight: 500;
+	padding: 5px 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	letter-spacing: 1px;
+	font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+  
 /**********************************************************************************************/
 /* HomeView Css */
 /**********************************************************************************************/
