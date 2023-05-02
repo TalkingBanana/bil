@@ -1,7 +1,5 @@
 <template>
   <PageHeader/> <!--헤더 컴포넌트-->
-  <nav>
-  </nav>
   <router-view/>
   <PageFooter/> <!--푸터 컴포넌트-->
 </template>

@@ -22,7 +22,7 @@
             <router-link to="/notice" class="nav-link js-scroll-trigger">공지사항</router-link> 
           </li>
           <li class="nav-item">
-            <router-link to="/study" class="nav-link js-scroll-trigger">교육</router-link> 
+            <router-link to="/studyBoard" class="nav-link js-scroll-trigger">교육</router-link> 
           </li> 
           <li class="nav-item">
             <router-link to="/management" class="nav-link js-scroll-trigger">관리 페이지</router-link>
