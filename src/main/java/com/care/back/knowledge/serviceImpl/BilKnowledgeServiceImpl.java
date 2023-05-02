@@ -1,11 +1,29 @@
 package com.care.back.knowledge.serviceImpl;
 
+import org.springframework.stereotype.Service;
+
 import com.care.back.knowledge.dto.KnowledgeDto;
-import com.care.back.qna.dto.QnaDto;
+import com.care.back.knowledge.service.BilKnowledgeService;
 
-public interface BilKnowledgeServiceImpl {
+@Service
+public class BilKnowledgeServiceImpl implements BilKnowledgeService{
 
-	public int knowledgeWriteProc(KnowledgeDto dto);
-	public int knowledgeUpdateProc(KnowledgeDto dt);
-	public int knowledgeDeleteProc(KnowledgeDto dt);
+	@Override
+	public int knowledgeWriteProc(KnowledgeDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int knowledgeUpdateProc(KnowledgeDto dt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int knowledgeDeleteProc(KnowledgeDto dt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

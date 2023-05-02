@@ -1,9 +1,9 @@
-package com.care.back.comment.service;
+package com.care.back.comment.serviceImpl;
 
 import com.care.back.comment.dto.CommentDto;
-import com.care.back.comment.serviceImpl.BilCommentServiceImpl;
+import com.care.back.comment.service.BilCommentService;
 
-public class BilCommentSerivce implements BilCommentServiceImpl{
+public class BilCommentSerivceImpl implements BilCommentService{
 
 	@Override
 	public int commentWriteProc(CommentDto dto) {

@@ -9,16 +9,15 @@
 <script>
   import PageHeader from '@/components/common/PageHeader.vue';
   import PageFooter from '@/components/common/PageFooter.vue';
-
   export default {
     name: 'App',
     components: {
       PageFooter,
-      PageHeader
+      PageHeader,
     },
     methods: {
       test(){
-        this.axios.get("/hello").
+        this.axios.get("/api/hello").
         then((result)=>{
           console.log(result.data)
         });

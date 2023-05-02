@@ -36,10 +36,10 @@ const routes = [
   }
   ,
   { /* 교육 router*/
-    path: '/study',
-    name: 'study',
+    path: '/StudyBoard',
+    name: 'StudyBoard',
     
-    component: () => import('../views/StudyView.vue')
+    component: () => import('../views/study/StudyBoard.vue')
   }
   ,
   { /* 관리 페이지 router*/

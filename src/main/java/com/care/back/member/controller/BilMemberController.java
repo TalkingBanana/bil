@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.care.back.member.dto.MemberDto;
-import com.care.back.member.service.BilMemberService;
+import com.care.back.member.serviceImpl.BilMemberServiceImpl;
 
 @Controller
 public class BilMemberController {
 
 	
 	@Autowired
-	BilMemberService service;
+	BilMemberServiceImpl service;
 	
 	@RequestMapping("/login")
 	@ResponseBody
