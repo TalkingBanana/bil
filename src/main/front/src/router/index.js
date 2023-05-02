@@ -7,58 +7,67 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-  {
+  { /* 커뮤니티 router*/
     path: '/community',
     name: 'community',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/CommunityView.vue')
+   
+    component: () => import('../views/CommunityView.vue')
   }
   ,
-  {
+  { /* 지식 router*/
     path: '/knowledge',
     name: 'knowledge',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/KnowledgeView.vue')
+    
+    component: () => import('../views/KnowledgeView.vue')
   }
   ,
-  {
+  { /* Q&A router*/
     path: '/question',
     name: 'question',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/QuestionView.vue')
+   
+    component: () => import('../views/QuestionView.vue')
   }
   ,
-  {
+  { /* 공지사항 router*/
     path: '/notice',
     name: 'notice',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/NoticeView.vue')
+    
+    component: () => import('../views/NoticeView.vue')
   }
   ,
-  {
+  { /* 교육 router*/
     path: '/study',
     name: 'study',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/StudyView.vue')
+    
+    component: () => import('../views/StudyView.vue')
   }
   ,
-  {
+  { /* 관리 페이지 router*/
     path: '/management',
     name: 'management',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ManagementView.vue')
+    
+    component: () => import('../views/ManagementView.vue')
+  }
+  ,
+  { /* 로그인 페이지 router*/
+    path: '/login',
+    name: 'login',
+    
+    component: () => import('../views/LoginView.vue')
+  }
+  ,
+  { /* 관리 페이지 router*/
+    path: '/register',
+    name: 'register',
+    
+    component: () => import('../views/RegisterView.vue')
+  }
+  ,
+  { /* 마이 페이지 router*/
+    path: '/profile',
+    name: 'profile',
+    
+    component: () => import('../views/ProfileView.vue')
   }
 ]
 
