@@ -20,16 +20,24 @@ public class BilStudyController {
 	
 	@RequestMapping("/studyList")
 	@ResponseBody
-	public ArrayList<BilStudyDto> boardList(int page){
+	public ArrayList<BilStudyDto> boardList(int page, String category, String keyword, String order){
 		ArrayList<BilStudyDto> list = new ArrayList<>();
-//		System.out.println("page : " + page);
-		list = service.studyList();
+		list = service.studyList(page, category, keyword, order);
 		return list;
 	}
+	
 	@RequestMapping("/studyTotal")
 	@ResponseBody
-	public int studyTotal() {
-		int result = service.getStudyTotal();
+	public int studyTotal(String category, String keyword) {
+		int result = service.getStudyTotal(category, keyword);
+		return result;
+	}
+	
+	@RequestMapping("/insertStudy")
+	@ResponseBody
+	public int insertStudy() {
+		BilStudyDto dto = new BilStudyDto();
+		int result = service.insertStudy(dto);
 		return result;
 	}
 }

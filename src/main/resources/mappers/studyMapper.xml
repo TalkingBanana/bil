@@ -4,9 +4,31 @@
 <mapper namespace="com.care.back.study.dao.BilStudyDao">
 	<select id="getStudyList" resultType="com.care.back.study.dto.BilStudyDto">
 		SELECT *, (SELECT COUNT(*) FROM COMMENTS WHERE STUDY.NUM = COMMENTS.POSTID) AS comments
-		FROM BIL.STUDY AS STUDY;
+		FROM BIL.STUDY AS STUDY
+		WHERE category LIKE CONCAT('%',#{code},'%')
+		AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENTS LIKE CONCAT('%',#{keyword},'%'))
+		<choose>
+			<when test="order == '최신순'">
+				ORDER BY writeDate DESC
+			</when>
+			<when test="order == '추천순'">
+				ORDER BY heart DESC
+			</when>
+			<when test="order == '댓글순'">
+				ORDER BY comments DESC
+			</when>
+			<when test="order == '조회순'">
+				ORDER BY view DESC
+			</when>
+		</choose>
+		LIMIT 10 OFFSET #{page};
 	</select>
 	<select id="getStudyTotal" resultType="int">
-		SELECT COUNT(*) FROM BIL.STUDY
+		SELECT COUNT(*) FROM BIL.STUDY WHERE category LIKE CONCAT('%',#{code},'%')
+		AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENTS LIKE CONCAT('%',#{keyword},'%'))
 	</select>
+	<insert id="insertStudy" parameterType="com.care.back.study.dto.BilStudyDto">
+		INSERT INTO BIL.STUDY(TITLE, CONTENTS, WRITEDATE, WRITER, CATEGORY, KORCATEGORY)
+		VALUES(#{title},#{contents},SYSDATE(), #{writer}, #{category},#{korCategory})
+	</insert>
 </mapper>

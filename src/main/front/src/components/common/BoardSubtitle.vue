@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-container class="subtitle w-max rounded p-3 px-5 mb-3">
+        <b-container class="subtitle w-max rounded p-3 px-5 my-4">
                 <b-row>
                     <b-col col="8" class="text-start">
                         <div>
@@ -42,7 +42,6 @@ export default{
 <style scoped>
 .subtitle{
     background-color: rgb(224, 224, 224);
-    width: 
 }
 .subtitle-icon{
     width: 100px;

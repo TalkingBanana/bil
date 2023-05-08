@@ -11,7 +11,14 @@ public class BilStudyDto {
 	private int view;
 	private String category;
 	private int comments;
+	private String korCategory;
 	
+	public String getKorCategory() {
+		return korCategory;
+	}
+	public void setKorCategory(String korCategory) {
+		this.korCategory = korCategory;
+	}
 	public int getNum() {
 		return num;
 	}

@@ -40,6 +40,12 @@ const routes = [
     name: 'StudyBoard',
     
     component: () => import('../views/study/StudyBoard.vue')
+  },
+  { /* 교육 게시글 작성 */
+    path : '/StudyWrite',
+    name : 'StudyWrite',
+
+    component:()=> import('../views/study/StudyWrite.vue')
   }
   ,
   { /* 관리 페이지 router*/
