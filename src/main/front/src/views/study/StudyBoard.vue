@@ -72,7 +72,7 @@
           </b-row>
           <hr>
         </b-container>
-        <page-nav></page-nav>
+        <page-nav :currentPage="currentPage" :totalPage="totalPage"></page-nav>
       </b-container>
   </div>
   </div>
@@ -95,13 +95,15 @@ import PageNav from '../../components/common/PageNav.vue';
             ],
             currentCategory : '',
             inputPlaceHolder : '교육 내에서 검색',
+            totalItems : 0,
             totalPage : 0,
-            currentPage : 0,
+            currentPage : 1,
             boardList : [],
           };
       },
       mounted() {
         this.getStudyList();
+        this.getStudyTotal();
       },
       methods: {
         getStudyList(){
@@ -115,6 +117,16 @@ import PageNav from '../../components/common/PageNav.vue';
             this.boardList = response.data;
           })
           .catch((error)=>{console.log(error)})
+        },
+        getStudyTotal(){
+          this.axios.get('/api/studyTotal')
+          .then((response)=>{
+            this.totalItems = response.data;
+            this.totalPage = Math.ceil(this.totalItems/10);
+          })
+          .catch((error)=>{
+            console.log(error)
+          })
         },
         pageChange(){
           

@@ -22,8 +22,14 @@ public class BilStudyController {
 	@ResponseBody
 	public ArrayList<BilStudyDto> boardList(int page){
 		ArrayList<BilStudyDto> list = new ArrayList<>();
-		System.out.println("page : " + page);
+//		System.out.println("page : " + page);
 		list = service.studyList();
 		return list;
+	}
+	@RequestMapping("/studyTotal")
+	@ResponseBody
+	public int studyTotal() {
+		int result = service.getStudyTotal();
+		return result;
 	}
 }

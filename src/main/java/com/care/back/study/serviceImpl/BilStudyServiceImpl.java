@@ -42,4 +42,11 @@ public class BilStudyServiceImpl implements BilStudyService{
 		return 0;
 	}
 
+	@Override
+	public int getStudyTotal() {
+		// TODO Auto-generated method stub
+		int result = dao.getStudyTotal();
+		return result;
+	}
+
 }

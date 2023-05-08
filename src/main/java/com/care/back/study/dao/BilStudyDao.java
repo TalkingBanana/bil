@@ -10,6 +10,7 @@ import com.care.back.study.dto.BilStudyDto;
 public interface BilStudyDao {
 
 	public ArrayList<BilStudyDto> getStudyList();
+	public int getStudyTotal();
 	public int deleteStudy(BilStudyDto dto);
 	public int updateStudy(BilStudyDto dto);
 	public int insertStudy(BilStudyDto dto);
