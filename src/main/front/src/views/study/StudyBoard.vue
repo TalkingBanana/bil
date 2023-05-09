@@ -121,7 +121,7 @@ import PageNav from '../../components/common/PageNav.vue';
       },
       methods: {
         dataSet(){
-          this.axios.get('/api/insertStudy')
+          this.$axios.get('/api/insertStudy')
           .then((response)=>{
             console.log(response)
           })
@@ -131,7 +131,7 @@ import PageNav from '../../components/common/PageNav.vue';
           ;
         },
         getStudyList(){
-          this.axios.get('/api/studyList',{
+          this.$axios.get('/api/studyList',{
             params:{
               page : this.currentPage,
               category : this.currentCategory,
@@ -145,7 +145,7 @@ import PageNav from '../../components/common/PageNav.vue';
           .catch((error)=>{console.log(error)})
         },
         getStudyTotal(){
-          this.axios.get('/api/studyTotal',{
+          this.$axios.get('/api/studyTotal',{
             params:{
               category : this.currentCategory,
               keyword : this.keyword,

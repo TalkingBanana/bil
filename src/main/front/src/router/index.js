@@ -30,7 +30,7 @@ const routes = [
     name: 'community',
    
     component: community,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   }
   ,
   { /* 지식 router*/
@@ -38,7 +38,7 @@ const routes = [
     name: 'knowledge',
     
     component: knowledge,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   }
   ,
   { /* Q&A router*/
@@ -46,7 +46,7 @@ const routes = [
     name: 'question',
    
     component: question,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   }
   ,
   { /* 공지사항 router*/
@@ -54,7 +54,7 @@ const routes = [
     name: 'notice',
     
     component: notice,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   }
   ,
   { /* 교육 router*/
@@ -62,7 +62,7 @@ const routes = [
     name: 'StudyBoard',
     
     component: StudyBoard,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   },
   { /* 교육 게시글 작성 */
     path : '/StudyWrite',
@@ -76,7 +76,7 @@ const routes = [
     name: 'management',
     
     component: management,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   }
   ,
   { /* 로그인 페이지 router*/
@@ -98,7 +98,7 @@ const routes = [
     name: 'profile',
     
     component: profile,
-    //beforeEnter: requireAuth()
+    // beforeEnter: requireAuth()
   }
 ]
 
