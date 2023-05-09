@@ -36,7 +36,7 @@ export default{
     },
     methods: {
         studyRead(num){
-            this.axios.get('/api/studyDetail',{
+            this.$axios.get('/api/studyDetail',{
                 params : {
                     num : num,
                 }
