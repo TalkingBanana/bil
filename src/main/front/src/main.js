@@ -28,7 +28,7 @@ library.add(fas, far, fab)
 
 axios.defaults.baseURL="http://localhost:8090";
 const app = createApp(App).use(router);
-app.config.globalProperties.axios = axios;
+app.config.globalProperties.$axios = axios;
 app.use(router)
 .use(BootstrapVue3)
 .use(CKEditor)

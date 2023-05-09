@@ -1,5 +1,6 @@
 package com.care.back.editor.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,12 @@ public class BilEditorController {
 	@RequestMapping("/knowledgeUpload")
 	@ResponseBody
 	public HashMap<String, Object> uploadHandler(
-			MultipartHttpServletRequest request, HttpServletResponse res
-			) {
-		
+			MultipartHttpServletRequest req, HttpServletResponse res
+			) throws IOException {
+		String result = service.imageUpload(req, res);
+		System.out.println();
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("url", "https://biltd.org/images/home/header-bg.jpg");
+		map.put("url", "http://localhost:8081/IMAGE/"+result);
 		return map;
 	}
 

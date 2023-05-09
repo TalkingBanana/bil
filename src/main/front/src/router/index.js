@@ -41,13 +41,20 @@ const routes = [
     
     component: () => import('../views/study/StudyBoard.vue')
   },
-  { /* 교육 게시글 작성 */
+  { /* 교육 게시글 작성 router */
     path : '/StudyWrite',
     name : 'StudyWrite',
 
     component:()=> import('../views/study/StudyWrite.vue')
-  }
-  ,
+  },
+  { /* 교육 페에지 상세보기 router */
+    path : '/StudyDetail/:num',
+    name : 'StudyDetail',
+    props: true,
+
+    component:()=> import('../views/study/StudyDetail.vue')
+
+  },
   { /* 관리 페이지 router*/
     path: '/management',
     name: 'management',

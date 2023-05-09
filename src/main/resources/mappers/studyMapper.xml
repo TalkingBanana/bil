@@ -23,12 +23,18 @@
 		</choose>
 		LIMIT 10 OFFSET #{page};
 	</select>
+	
 	<select id="getStudyTotal" resultType="int">
 		SELECT COUNT(*) FROM BIL.STUDY WHERE category LIKE CONCAT('%',#{code},'%')
 		AND (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENTS LIKE CONCAT('%',#{keyword},'%'))
 	</select>
+	
 	<insert id="insertStudy" parameterType="com.care.back.study.dto.BilStudyDto">
 		INSERT INTO BIL.STUDY(TITLE, CONTENTS, WRITEDATE, WRITER, CATEGORY, KORCATEGORY)
 		VALUES(#{title},#{contents},SYSDATE(), #{writer}, #{category},#{korCategory})
 	</insert>
+	
+	<select id="getStudyDetail" resultType="com.care.back.study.dto.BilStudyDto">
+		SELECT * FROM BIL.STUDY WHERE NUM = #{num}
+	</select>
 </mapper>

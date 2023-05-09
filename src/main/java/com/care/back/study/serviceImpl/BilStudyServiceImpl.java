@@ -23,7 +23,7 @@ public class BilStudyServiceImpl implements BilStudyService{
 		// TODO Auto-generated method stub
 		String code = "";
 		if(category.equals("자료실")) {
-			code = "datas";
+			code = "files";
 		} else if (category.equals("강의")) {
 			code = "video";
 		} else {
@@ -53,24 +53,14 @@ public class BilStudyServiceImpl implements BilStudyService{
 	@Override
 	public int insertStudy(BilStudyDto dto) {
 		// TODO Auto-generated method stub
-		for(int i =0; i<50;i++) {
-			dto.setTitle("title-"+i);
-			dto.setContents("contents-"+i);
-			dto.setCategory("datas");
-			dto.setWriter("writer-"+i);
-			dao.insertStudy(dto);
+		if(dto.getCategory().equals("files")) {
+			dto.setKorCategory("자료실");
+		} else {
+			dto.setKorCategory("강의");
 		}
-		
-		for(int i =0; i<50;i++) {
-			dto.setTitle("title-"+i);
-			dto.setContents("contents-"+i);
-			dto.setCategory("video");
-			dto.setWriter("writer-"+i);
-			dao.insertStudy(dto);
-		}
-		
-		
-		return 0;
+		dto.setWriter("테스터 계정");
+		int result = dao.insertStudy(dto);
+		return result;
 	}
 
 	@Override
@@ -102,5 +92,13 @@ public class BilStudyServiceImpl implements BilStudyService{
 		map.put("keyword", keyword);
 		int result = dao.getStudyTotal(map);
 		return result;
+	}
+
+	@Override
+	public BilStudyDto getStudyDetail(int num) {
+		// TODO Auto-generated method stub
+		BilStudyDto dto = new BilStudyDto();
+		dto = dao.getStudyDetail(num);
+		return dto;
 	}
 }

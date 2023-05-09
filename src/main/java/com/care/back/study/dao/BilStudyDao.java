@@ -12,6 +12,7 @@ public interface BilStudyDao {
 
 	public ArrayList<BilStudyDto> getStudyList(HashMap<String, Object> map);
 	public int getStudyTotal(HashMap<String,Object> map);
+	public BilStudyDto getStudyDetail(int num);
 	public int deleteStudy(BilStudyDto dto);
 	public int updateStudy(BilStudyDto dto);
 	public int insertStudy(BilStudyDto dto);

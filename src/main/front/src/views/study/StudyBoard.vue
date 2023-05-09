@@ -1,14 +1,16 @@
 <template>
   <div>
-    <b-button @click="dataSet()">응애</b-button>
+    <!-- <b-button @click="dataSet()" class="mt-2">응애</b-button> -->
     <div id="knowledge-board" class="container-lg w-50 mb-3">
       <subtitle :logoPath="logoPath" :labelText="labelText" :subtitle="subtitle"/>
       <b-container class="w-max p-0">
         <b-nav class="p-0">
             <b-nav-item class="text-start me-auto">
-              <b-button class="btn-custom" to="StudyWrite">
+              <router-link to="StudyWrite">
+                <b-button class="btn-custom">
                   작성하기
-              </b-button>
+                </b-button>
+              </router-link>
             </b-nav-item>
             <b-nav-item class="text-center">
               <b-nav class="justify-content-center">
@@ -63,8 +65,12 @@
               {{ board.writeDate }}</b-col>
           </b-row>
           <b-row class="p-2">
-            <b-col class="text-start fs-2">{{ board.title }}</b-col>
-            <b-col class="text-end col-8">
+              <b-col class="text-start fs-3">
+              <b-link class="text-decoration-none text-body" :to='"/StudyDetail"+"/"+board.num'>
+                {{ board.title }}
+              </b-link>
+              </b-col>
+            <b-col class="text-end">
               <span class="me-3">
                 <font-awesome-icon :icon="['fas', 'eye']" /> {{ board.view }} 
               </span>
@@ -121,7 +127,7 @@ import PageNav from '../../components/common/PageNav.vue';
       },
       methods: {
         dataSet(){
-          this.axios.get('/api/insertStudy')
+          this.$axios.get('/api/insertStudy')
           .then((response)=>{
             console.log(response)
           })
@@ -131,7 +137,7 @@ import PageNav from '../../components/common/PageNav.vue';
           ;
         },
         getStudyList(){
-          this.axios.get('/api/studyList',{
+          this.$axios.get('/api/studyList',{
             params:{
               page : this.currentPage,
               category : this.currentCategory,
@@ -145,7 +151,7 @@ import PageNav from '../../components/common/PageNav.vue';
           .catch((error)=>{console.log(error)})
         },
         getStudyTotal(){
-          this.axios.get('/api/studyTotal',{
+          this.$axios.get('/api/studyTotal',{
             params:{
               category : this.currentCategory,
               keyword : this.keyword,
@@ -197,11 +203,10 @@ import PageNav from '../../components/common/PageNav.vue';
 <style scoped>
 .btn-custom{
   --bs-btn-bg:rgb(52, 152, 219) !important;
-  --bs-btn-border-color : null;
-  background-color: rgb(52, 152, 219) !important;
+  --bs-btn-border-color : null !important;
 }
 .btn-custom:hover{
-  background-color: rgb(126, 186, 226);
+  background-color: rgb(126, 186, 226) !important;
 }
 
 .btn-custom-order{
@@ -228,4 +233,7 @@ import PageNav from '../../components/common/PageNav.vue';
   transition: 0.15s;
 }
 
+b-row b-col b-link{
+  text-decoration: none;
+}
 </style>
