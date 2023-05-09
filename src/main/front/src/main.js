@@ -1,12 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import axios from "axios";
+import axios from './utils/axios';
 import router from "./router";
 import './assets/css/layouts/layout.css';
 import BootstrapVue3 from 'bootstrap-vue-3';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 import CKEditor from "@ckeditor/ckeditor5-vue";
+import store from './vuex/store'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -27,10 +28,13 @@ library.add(fas, far, fab)
 
 
 axios.defaults.baseURL="http://localhost:8090";
-const app = createApp(App).use(router);
-app.config.globalProperties.$axios = axios;
+const app = createApp(App).use(router).use(router);
+app.config.globalProperties.$axios = axios
+app.config.globalProperties.$store = store
+
 app.use(router)
 .use(BootstrapVue3)
 .use(CKEditor)
 .component('font-awesome-icon', FontAwesomeIcon)
+.use(store)
 .mount('#app');
