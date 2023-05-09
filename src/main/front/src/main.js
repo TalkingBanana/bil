@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import axios from "axios";
+import axios from './utils/axios';
 import router from "./router";
 import './assets/css/layouts/layout.css';
 import BootstrapVue3 from 'bootstrap-vue-3';
@@ -29,7 +29,7 @@ library.add(fas, far, fab)
 
 axios.defaults.baseURL="http://localhost:8090";
 const app = createApp(App).use(router).use(router);
-app.config.globalProperties.axios = axios
+app.config.globalProperties.$axios = axios
 app.config.globalProperties.$store = store
 
 app.use(router)
