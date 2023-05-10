@@ -125,8 +125,11 @@ import PageNav from '../../components/common/PageNav.vue';
       mounted() {
         this.search()
       },
+      created() {
+        this.search()
+      },
       methods: {
-        dataSet(){
+        dataSet(){ // 테스트용 데이터 저장용 임시 메서드
           this.$axios.get('/api/insertStudy')
           .then((response)=>{
             console.log(response)
@@ -136,7 +139,7 @@ import PageNav from '../../components/common/PageNav.vue';
           })
           ;
         },
-        getStudyList(){
+        getStudyList(){ // 게시글 데이터 조회
           this.$axios.get('/api/studyList',{
             params:{
               page : this.currentPage,
@@ -150,7 +153,7 @@ import PageNav from '../../components/common/PageNav.vue';
           })
           .catch((error)=>{console.log(error)})
         },
-        getStudyTotal(){
+        getStudyTotal(){ // 게시글 총 갯수 조회
           this.$axios.get('/api/studyTotal',{
             params:{
               category : this.currentCategory,
@@ -165,7 +168,7 @@ import PageNav from '../../components/common/PageNav.vue';
             console.log(error)
           })
         },
-        pageChange(val){
+        pageChange(val){ // 페이지 변경
           if(val<=0){
             return;
           }
@@ -175,21 +178,21 @@ import PageNav from '../../components/common/PageNav.vue';
           this.currentPage = val;
           this.getStudyList();
         },
-        categoryChange(val){
+        categoryChange(val){ // 카테고리 변경
           this.currentPage = 1;
           this.currentCategory = val;
           this.search();
         },
-        orderChange(val){
+        orderChange(val){ // 정렬 순서 변경
           this.order = val;
           this.search()
         },
-        search(){
+        search(){ // DB 조회
           this.currentPage=1;
           this.getStudyTotal();
           this.getStudyList();
         },
-        refresh(){
+        refresh(){ // 새로고침
           this.currentPage = 1;
           this.currentCategory = "전체";
           this.keyword = "";
@@ -202,15 +205,15 @@ import PageNav from '../../components/common/PageNav.vue';
 
 <style scoped>
 .btn-custom{
-  --bs-btn-bg:rgb(52, 152, 219) !important;
+  --bs-btn-bg:#3498db !important;
   --bs-btn-border-color : null !important;
 }
 .btn-custom:hover{
-  background-color: rgb(126, 186, 226) !important;
+  background-color: #7ebae2 !important;
 }
 
 .btn-custom-order{
-  --bs-btn-bg: rgb(224, 224, 224);
+  --bs-btn-bg: #e0e0e0;
   --bs-btn-border-color : null;
   color : black;
 }
@@ -218,18 +221,18 @@ import PageNav from '../../components/common/PageNav.vue';
   outline: none;
 }
 .currentCategory{
-  color: rgb(52, 152, 219) !important;
+  color: #3498db !important;
 }
 
 .categories{
   color : black !important;
 }
 .categories:hover{
-  color: rgb(52, 152, 219) !important;
+  color: #3498db !important;
   transition: 0.15s;
 }
 .text-dark:hover{
-  color: rgb(52, 152, 219) !important;
+  color: #3498db !important;
   transition: 0.15s;
 }
 
