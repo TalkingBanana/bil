@@ -10,8 +10,7 @@
             class="mb-5"
             ref="categorySelect"
             ></b-form-select>
-        <!-- <ckeditor :editor="Editor" v-model="form.contents" :config="editorConfig" class="ckeditor"></ckeditor> -->
-        <ckeditor :editor="editor" :config="editorConfig" v-model="form.contents"></ckeditor>
+            <ckeditor :editor="editor" v-model="form.contents" :config="editorConfig"></ckeditor>
         <b-container class="my-3 justify-content-md-end d-md-flex">
             <b-button class="" type="reset">취소</b-button>
             <b-button type="submit" class="btn-custom ms-2">등록</b-button>
@@ -25,6 +24,7 @@
   import Subtitle from '../../components/common/BoardSubtitle.vue';
   import router from '@/router';
 
+  const token = "Bearer " + localStorage.getItem('user_token');
 
   export default {
     components: { Subtitle },
@@ -36,13 +36,14 @@
             subtitle : "교육",
             editor: Editor,
             editorConfig: {
-            // The configuration of the editor.
+                height: '500px',
+                // The configuration of the editor.
                 simpleUpload: {
                     // 업로드 URL
-                    uploadUrl: '/api/knowledgeUpload',
+                    uploadUrl: '/api/studyUpload',
                     // 헤더 옵션 (선택사항)
                     headers: {
-                    'X-CSRF-TOKEN': 'CSRF_TOKEN_VALUE',
+                      'Authorization' : token,
                     },
                     method : 'POST'
                 },
