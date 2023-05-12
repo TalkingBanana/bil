@@ -29,7 +29,7 @@ public class BilEditorController {
 		String result = service.imageUpload(req, res);
 		System.out.println("??");
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("url", "http://localhost:8081/IMAGE/"+result);
+		map.put("url", "http://localhost:8080/IMAGE/"+result);
 		return map;
 	}
 }

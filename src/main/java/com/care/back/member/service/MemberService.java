@@ -2,6 +2,7 @@ package com.care.back.member.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,4 +36,17 @@ public class MemberService implements UserDetailsService{
 		
 		return new User(userEntity.getId(), userEntity.getPwd(),authorities);
 	}
+	
+	
+	public boolean isDuplicatedId(String id) {
+	     Optional<UserEntity> userEntity = userRepository.findById(id);
+	     return userEntity.isPresent();
+	}
+
+	public boolean isDuplicatedNickname(String nickname) {
+	     Optional<UserEntity> userEntity = userRepository.findByNickname(nickname);
+	     return userEntity.isPresent();
+	}
+	
+
 }

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.care.back.member.dto.MemberDto;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +29,14 @@ public class UserEntity {
 	private String useyn;
 	private String nickname;
 
+	public UserEntity(MemberDto memberDto) {
+		this.id = memberDto.getId();
+		this.pwd = memberDto.getPwd();
+		this.nickname = memberDto.getNickname();
+	}
+	
+	  public static UserEntity registMember(MemberDto memberDto){
+	        return new UserEntity(memberDto);
+	    }
+	
 }

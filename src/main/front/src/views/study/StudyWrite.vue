@@ -84,7 +84,7 @@
             form.append("category",this.form.category);
             form.append("contents",this.form.contents);
 
-            this.axios.post('/api/insertStudy',form,{
+            this.$axios.post('/api/insertStudy',form,{
                 headers:{
                     "Content-type": "multipart/form-data"
                 }
