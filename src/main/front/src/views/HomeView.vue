@@ -12,6 +12,17 @@
 <script>
 export default {
   name: 'HomeView',
+  mounted() {
+    const token = localStorage.getItem('user_token')
+    if (token) {
+      this.$store.state.isLogin = true
+    }
+  },
+  computed: {
+    isLogin() {
+      return this.$store.state.isLogin
+    },
+  },
   components: {
   }
 }

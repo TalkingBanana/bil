@@ -28,7 +28,7 @@ public class BilEditorController {
 			) throws IOException {
 		String result = service.imageUpload(req, res);
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("url", "http://localhost:8081/IMAGE/"+result);
+		map.put("url", "http://localhost:8080/IMAGE/"+result);
 		return map;
 	}
 }
