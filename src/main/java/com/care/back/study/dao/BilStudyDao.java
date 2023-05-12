@@ -16,4 +16,5 @@ public interface BilStudyDao {
 	public int deleteStudy(BilStudyDto dto);
 	public int updateStudy(BilStudyDto dto);
 	public int insertStudy(BilStudyDto dto);
+	public int increaseView(int num);
 }

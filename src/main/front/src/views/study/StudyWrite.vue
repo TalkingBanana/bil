@@ -11,12 +11,15 @@
             ref="categorySelect"
             ></b-form-select>
             <ckeditor :editor="editor" v-model="form.contents" :config="editorConfig"></ckeditor>
-        <b-container class="my-3 justify-content-md-end d-md-flex">
-            <b-button class="" type="reset">취소</b-button>
-            <b-button type="submit" class="btn-custom ms-2">등록</b-button>
-        </b-container>
+            
+            <div class="m-0 my-5 d-flex justify-content-between align-items-center">
+              <input class="form-control me-auto w-75" type="file" :state="Boolean(form.fileYn)" name="file" ref="file">
+                <b-button class="" type="reset">취소</b-button>
+                <b-button type="submit" class="btn-custom ms-2">등록</b-button>
+            </div>
     </b-form>
   </b-container>
+  
 </template>
 
 <script>
@@ -58,8 +61,9 @@
               form:{
                   title:'',
                   category : '',
-                  contents : ''
-              }
+                  contents : '',
+                },
+                filename: null,
           };
       },
       methods: {
@@ -100,21 +104,32 @@
               )
               return;
             }
-            const form = new FormData();
-            form.append("title",this.form.title);
-            form.append("category",this.form.category);
-            form.append("contents",this.form.contents);
+            const formdata = new FormData();
+            if(!this.$refs.file.files[0] != undefined){
+              this.filename = this.$refs.file.files[0]
+            } else{
+              this.filename = null;
+            }
+            formdata.append("file",this.filename)
+            formdata.append("title",this.form.title);
+            formdata.append("category",this.form.category);
+            formdata.append("contents",this.form.contents);
 
-            this.$axios.post('/api/insertStudy',form,{
+            this.$axios.post(
+              '/api/insertStudy',
+              formdata
+              ,
+            {
                 headers:{
                     "Content-type": "multipart/form-data"
                 }
             })
             .then(
-                this.$swal('Success','작성되었습니다','success'),
-                router.push({
+              this.$swal('Success','작성되었습니다','success'),
+              router.push({
                     name:"StudyBoard"
                 })
+              
             )
             .catch((error)=>{
               console.log(error)

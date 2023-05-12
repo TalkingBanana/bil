@@ -1,26 +1,28 @@
 package com.care.back.study.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.care.back.comment.dto.BilCommentDto;
 import com.care.back.study.dto.BilStudyDto;
 import com.care.back.study.service.BilStudyService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
+
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class BilStudyController {
 	
 	@Autowired
 	BilStudyService service;
-	
 	
 	@RequestMapping("/studyList")
 	public ArrayList<BilStudyDto> boardList(int page, String category, String keyword, String order){
@@ -37,12 +39,16 @@ public class BilStudyController {
 	
 	@RequestMapping("/insertStudy")
 	public int insertStudy(
-			@RequestParam("title") String title, 
-			@RequestParam("category") String category, 
-			@RequestParam("contents") String contents) {
+			@RequestParam("title") String title,
+			@RequestParam("contents") String contents,
+			@RequestParam("category") String category,
+			@RequestParam(required = false, value="file") MultipartFile file
+			) {
 		BilStudyDto dto = new BilStudyDto();
-		dto.setTitle(title); dto.setCategory(category); dto.setContents(contents);
-		int result = service.insertStudy(dto);
+		dto.setTitle(title);
+		dto.setContents(contents);
+		dto.setCategory(category);
+		int result = service.insertStudy(dto, file);
 		return result;
 	}
 	
@@ -52,4 +58,10 @@ public class BilStudyController {
 		dto = service.getStudyDetail(num);
 		return dto;
 	}
+	
+	@RequestMapping("/fileDownload")
+	public void fileDownload(String path, HttpServletResponse res){
+		service.fileDownload(res, path);
+	}
+	
 }

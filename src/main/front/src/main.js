@@ -21,8 +21,10 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 
+/* SweetAlert import */
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 /* add icons to the library */
 library.add(fas, far, fab)

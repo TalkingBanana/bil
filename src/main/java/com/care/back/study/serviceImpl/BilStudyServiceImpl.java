@@ -1,14 +1,24 @@
 package com.care.back.study.serviceImpl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.care.back.comment.dto.BilCommentDto;
 import com.care.back.study.dao.BilStudyDao;
 import com.care.back.study.dto.BilStudyDto;
 import com.care.back.study.service.BilStudyService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 
 @Service
@@ -17,6 +27,8 @@ public class BilStudyServiceImpl implements BilStudyService{
 	
 	@Autowired
 	BilStudyDao dao;
+	
+	private String filePath = "C:/bil-storage/";
 	
 	@Override
 	public ArrayList<BilStudyDto> studyList(int currentPage, String category, String keyword, String order) {
@@ -51,7 +63,7 @@ public class BilStudyServiceImpl implements BilStudyService{
 	}
 
 	@Override
-	public int insertStudy(BilStudyDto dto) {
+	public int insertStudy(BilStudyDto dto, MultipartFile file) {
 		// TODO Auto-generated method stub
 		if(dto.getCategory().equals("files")) {
 			dto.setKorCategory("자료실");
@@ -59,6 +71,36 @@ public class BilStudyServiceImpl implements BilStudyService{
 			dto.setKorCategory("강의");
 		}
 		dto.setWriter("테스터 계정");
+		
+		File uploadFile = new File(filePath+file.getOriginalFilename());
+		
+		if(!uploadFile.getParentFile().exists()) {
+			uploadFile.getParentFile().mkdirs();
+		}
+		
+		try {
+			InputStream input = file.getInputStream();
+			FileOutputStream output = new FileOutputStream(uploadFile);
+			
+			int count = 0;
+			byte[] buffer = new byte[1024];
+			
+			while((count=input.read(buffer)) != -1) {
+				output.write(buffer,0,count);
+			}
+			input.close();
+			output.close();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(!file.isEmpty()) {
+			dto.setFileYn(file.getOriginalFilename());
+		}
+		
+		
 		int result = dao.insertStudy(dto);
 		return result;
 	}
@@ -97,8 +139,30 @@ public class BilStudyServiceImpl implements BilStudyService{
 	@Override
 	public BilStudyDto getStudyDetail(int num) {
 		// TODO Auto-generated method stub
+		
+		
 		BilStudyDto dto = new BilStudyDto();
 		dto = dao.getStudyDetail(num);
 		return dto;
 	}
+
+	@Override
+	public void fileDownload(HttpServletResponse res, String path) {
+		// TODO Auto-generated method stub
+		try {
+			byte[] fileByte = FileUtils.readFileToByteArray(new File(filePath+path));
+			
+			res.setContentType("application/octet-stream");
+			res.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode("tistory.png", "UTF-8")+"\";");
+			res.setHeader("Content-Transfer-Encoding", "binary");
+
+			res.getOutputStream().write(fileByte);
+			res.getOutputStream().flush();
+			res.getOutputStream().close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

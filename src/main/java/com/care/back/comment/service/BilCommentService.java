@@ -1,9 +1,14 @@
 package com.care.back.comment.service;
 
-import com.care.back.comment.dto.CommentDto;
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import com.care.back.comment.dto.BilCommentDto;
 
 public interface BilCommentService {
-	public int commentWriteProc(CommentDto dto);
-	public int commentUpdateProc(CommentDto dto);
-	public int commentDeleteProc(CommentDto dto);
+	public int commentWriteProc(BilCommentDto dto);
+	public int commentUpdateProc(BilCommentDto dto);
+	public int commentDeleteProc(BilCommentDto dto);
+	public ArrayList<BilCommentDto> getCommentList(BilCommentDto dto);
 }
