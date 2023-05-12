@@ -27,7 +27,6 @@ public class BilEditorController {
 			MultipartHttpServletRequest req, HttpServletResponse res
 			) throws IOException {
 		String result = service.imageUpload(req, res);
-		System.out.println("??");
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("url", "http://localhost:8080/IMAGE/"+result);
 		return map;

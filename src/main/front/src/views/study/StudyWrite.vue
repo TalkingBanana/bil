@@ -36,7 +36,6 @@
             subtitle : "교육",
             editor: Editor,
             editorConfig: {
-                height: '500px',
                 // The configuration of the editor.
                 simpleUpload: {
                     // 업로드 URL
@@ -66,18 +65,40 @@
       methods: {
         submit(){
             if(this.form.category==null){
-                alert("태그를 선택해주세요");
-                this.$refs.categorySelect.focus()
-                return;
+              this.$swal({
+                title:'warning!',
+                text : "태그를 선택해주세요",
+                type :'warning',
+                icon : 'warning',
+                didClose:()=>{
+                  this.$refs.categorySelect.focus()
+                  }
+                }
+              )
+              return;
             }
             if(this.form.title == null || this.form.title == ""){
-                alert("제목을 입력해주세요");
-                this.$refs.title.focus();
-                return;
+              this.$swal({
+                  title :'warning!',
+                  text :"제목을 입력해주세요",
+                  type :'warning',
+                  icon : 'warning',
+                  didClose: () => {
+                    this.$refs.title.focus()
+                  }
+                }
+              )
+              return;
             }
             if(this.form.contents == null || this.form.contents == ""){
-                alert("내용을 입력하세요");
-                return;
+              this.$swal({
+                title :'warning!',
+                text :"내용을 입력하세요",
+                type :'warning',
+                icon : 'warning',
+              }
+              )
+              return;
             }
             const form = new FormData();
             form.append("title",this.form.title);
@@ -90,12 +111,15 @@
                 }
             })
             .then(
-                alert("작성되었습니다."),
+                this.$swal('Success','작성되었습니다','success'),
                 router.push({
                     name:"StudyBoard"
                 })
             )
-            .catch((error)=>{console.log(error)})
+            .catch((error)=>{
+              console.log(error)
+              this.$swal('Error','게시글이 정상적으로 작성되지 않았습니다','error')
+            })
         }
       },
   }
@@ -103,12 +127,12 @@
 
 <style scoped>
 .btn-custom{
-  --bs-btn-bg:rgb(52, 152, 219) !important;
+  --bs-btn-bg:#3498db !important;
   --bs-btn-border-color : null !important;
 }
 
 .btn-custom:hover{
-  background-color: rgb(126, 186, 226) !important;
+  background-color: #7ebae2 !important;
 }
 
 

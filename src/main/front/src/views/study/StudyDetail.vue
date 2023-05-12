@@ -14,6 +14,14 @@
                 {{ form.title }}
             </h2>
             <div v-html="form.contents"></div>
+
+            <b-container class="ms-auto text-end">
+                <font-awesome-icon :icon="['fas', 'thumbs-up']" /> 
+                <text class="fw-bold ms-2">
+                    {{ form.heart }}
+                </text>
+            </b-container>
+
             <hr class="my-5">
         </b-container>
     </div>
@@ -35,7 +43,7 @@ export default{
         }
     },
     methods: {
-        studyRead(num){
+        studyRead(num){ // 게시글 데이터 조회
             this.$axios.get('/api/studyDetail',{
                 params : {
                     num : num,
@@ -81,7 +89,7 @@ export default{
 }
 
 .thisCategory{
-    color : rgb(52, 152, 219);
+    color : #3498db;
 }
 
 blockquote {

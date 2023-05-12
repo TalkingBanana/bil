@@ -17,11 +17,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { fas } from '@fortawesome/free-solid-svg-icons'
-
 import { far } from '@fortawesome/free-regular-svg-icons';
-
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 /* add icons to the library */
 library.add(fas, far, fab)
@@ -32,9 +33,15 @@ const app = createApp(App).use(router).use(router);
 app.config.globalProperties.$axios = axios
 app.config.globalProperties.$store = store
 
+const options = {
+    confirmButtonColor: '#41b882',
+    cancelButtonColor: '#ff7674',
+  };
+
 app.use(router)
 .use(BootstrapVue3)
 .use(CKEditor)
+.use(VueSweetalert2, options)
 .component('font-awesome-icon', FontAwesomeIcon)
 .use(store)
 .mount('#app');
