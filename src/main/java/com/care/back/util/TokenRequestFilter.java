@@ -32,6 +32,8 @@ public class TokenRequestFilter extends OncePerRequestFilter {
 		try {
 			if ("/user/login".equals(request.getRequestURI())) {
 				doFilter(request, response, filterChain);
+			} else if ("/user/register".equals(request.getRequestURI())) {
+				doFilter(request, response, filterChain);
 			} else {
 				String token = parseJwt(request);
 				if (token == null) {

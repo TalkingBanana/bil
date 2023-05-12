@@ -28,16 +28,16 @@
             <router-link to="/management" class="nav-link js-scroll-trigger">관리 페이지</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/user/login" v-if="!this.$store.state.isLogin" class="login-button js-scroll-trigger">로그인</router-link>
-          </li>
-          <li class="nav-item">
             <a v-if="this.$store.state.isLogin" @click="fnLogout" class="login-button js-scroll-trigger">로그아웃</a>
           </li>
           <li class="nav-item">
-            <router-link to="/user/register" v-if="!this.$store.state.isLogin" class="register-button js-scroll-trigger">회원가입</router-link>
+            <router-link to="/user/profile" v-if="this.$store.state.isLogin" class="register-button js-scroll-trigger">마이 페이지</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/user/profile" v-if="this.$store.state.isLogin" class="register-button js-scroll-trigger">마이 페이지</router-link>
+            <router-link to="/user/login" v-if="!this.$store.state.isLogin" class="login-button js-scroll-trigger">로그인</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/user/register" v-if="!this.$store.state.isLogin" class="register-button js-scroll-trigger">회원가입</router-link>
           </li>
         </ul>
       </div>

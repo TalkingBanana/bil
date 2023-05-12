@@ -25,7 +25,7 @@ public class JwtUtil {
 	public String createToken(String id, String nickName) {
 		Algorithm algorithm = Algorithm.HMAC256(secret);
 		return JWT.create()
-				.withIssuer("vue-board")
+				.withIssuer("front")
 				.withClaim("id", id)
 				.withClaim("nickName", nickName)
 				.withIssuedAt(new Date())
@@ -36,7 +36,7 @@ public class JwtUtil {
 		try {
 			Algorithm algorithm = Algorithm.HMAC256(secret);
 			JWTVerifier verifier = JWT.require(algorithm)
-					.withIssuer("vue-board")
+					.withIssuer("front")
 					.build();
 			return verifier.verify(token);
 		} catch (JWTVerificationException e) {

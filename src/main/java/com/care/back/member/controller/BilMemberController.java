@@ -1,5 +1,8 @@
 package com.care.back.member.controller;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,19 +13,23 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.care.back.entity.UserEntity;
+import com.care.back.entity.UserRepository;
+import com.care.back.member.dto.MemberDto;
 import com.care.back.member.service.MemberService;
 import com.care.back.util.JwtUtil;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RequiredArgsConstructor
 @CrossOrigin
 @RestController
@@ -31,6 +38,8 @@ public class BilMemberController {
 	private final JwtUtil jwtUtil;
 	private final MemberService memberService;
 	private final AuthenticationManager authenticationManager;
+	private final PasswordEncoder passwordEncoder;
+	private final UserRepository userRepository;
 
 	@PostMapping("/login")
 	public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> paramMap) {
@@ -54,4 +63,30 @@ public class BilMemberController {
 		return ResponseEntity.ok(result);
 	}
 	
+	@PostMapping("/register")
+	public ResponseEntity<String> register(@RequestBody @Valid MemberDto memberDto) {
+		
+		 if (memberService.isDuplicatedId(memberDto.getId())) {
+		        return ResponseEntity.badRequest().body("중복된 id입니다");
+		    }
+		 if (memberService.isDuplicatedNickname(memberDto.getNickname())) {
+		        return ResponseEntity.badRequest().body("닉네임이 중복됩니다");
+		    }
+		
+	    String encPassword = passwordEncoder.encode(memberDto.getPwd());
+	    UserEntity userEntity = UserEntity.builder()
+	            .id(memberDto.getId())
+	            .pwd(encPassword)
+	            .regdate(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
+	            .useyn("Y")
+	            .nickname(memberDto.getNickname())
+	            .build();
+
+	    UserEntity savedUser = userRepository.save(userEntity);
+	    if (savedUser != null) {
+	        return ResponseEntity.ok("회원가입 성공");
+	    } else {
+	        return ResponseEntity.badRequest().build();
+	    }
+	}
 }

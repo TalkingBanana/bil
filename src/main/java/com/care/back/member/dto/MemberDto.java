@@ -1,14 +1,22 @@
 package com.care.back.member.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class MemberDto {
+
 	private String id;
 	private String pwd;
-	private String name;
-	private String regDate;
-	private String useYn;
 	private String nickname;
+	
+	public MemberDto(String id, String pwd, String nickname) {
 
+		this.id = id;
+		this.pwd = pwd;
+		this.nickname = nickname;
+	}
+	
+	
 }
